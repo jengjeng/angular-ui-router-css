@@ -1,2 +1,2 @@
 # angular-ui-router-css
-CSS Resolver for AngularHS UI Router
+CSS Resolver for AngularJS UI Router
