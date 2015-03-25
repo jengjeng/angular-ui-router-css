@@ -1,0 +1,51 @@
+{
+  "name": "angular-ui-router-css",
+  "filename": "angular-ui-router-css.js",
+  "description": "CSS resolver for AngularJS",
+  "version": "0.0.0",
+  "homepage": "https://github.com/jengjeng/angular-ui-router-css",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jengjeng/angular-ui-router-css"
+  },
+  "npmName": "angular-ui-router-css",
+  "npmFileMap": [
+    {
+      "basePath": "/",
+      "files": [
+        "*.js"
+      ]
+    }
+  ],
+  "files": [
+    "angular-ui-router-css.js",
+    "angular-ui-router-css.min.js"
+  ],
+  "authors": [
+    "Wittawat Patcharinsak <kinkongjeng@gmail.com>"
+  ],
+  "keywords": [
+    "angularjs",
+    "ng-route",
+    "ui-router",
+    "css"
+  ],
+  "autoupdate": {
+    "source": "git",
+    "target": "git://github.com/jengjeng/angular-ui-router-css",
+    "basePath": "/",
+    "files": [
+      "*.js"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/jengjeng/angular-ui-router-css/issues"
+  },
+  "main": "angular-ui-router-css.js",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.4",
+    "grunt-cli": "~0.1.11"
+  }
+}
