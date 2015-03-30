@@ -1,6 +1,6 @@
 /**
  * Angular UI Router CSS - CSS Resolver for AngularJS UI Router
- * @version v0.0.0
+ * @version v0.0.1
  * @author Wittawat Patcharinsak
  * @link https://github.com/jengjeng/angular-ui-router-css
  */
@@ -30,7 +30,6 @@
                         return stateDefine;
                     },
                     css: [],
-                    promises: [],
                     deferred: null,
                     removedLinks: []
                 };
@@ -57,7 +56,6 @@
         ]);
 
     function requireCssElement($head, $uiRouterCss, $q, toStateDefine) {
-        $uiRouterCss.promises = [];
         $uiRouterCss.removedLinks = [];
         $uiRouterCss.deferred = $q.defer();
         $uiRouterCss.deferred.promise.then(function () {

@@ -1,7 +1,7 @@
 {
   "name": "angular-ui-router-css",
   "main": "./angular-ui-router-css.js",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "authors": "Wittawat Patcharinsak <kinkongjeng@gmail.com>",
   "description": "CSS resolver for AngularJS UI Router",
   "keywords": [

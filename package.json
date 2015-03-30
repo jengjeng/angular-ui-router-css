@@ -2,7 +2,7 @@
   "name": "angular-ui-router-css",
   "filename": "angular-ui-router-css.js",
   "description": "CSS resolver for AngularJS",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "homepage": "https://github.com/jengjeng/angular-ui-router-css",
   "repository": {
     "type": "git",
