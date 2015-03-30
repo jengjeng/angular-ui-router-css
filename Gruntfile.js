@@ -9,6 +9,7 @@ module.exports = function(grunt) {
             },
 
             build: {
+                sourceMap: false,
                 src: '<%= pkg.name %>.js',
                 dest: '<%= pkg.name %>.min.js'
             }
