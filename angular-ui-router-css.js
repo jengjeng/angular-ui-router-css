@@ -12,7 +12,8 @@
             var fn = $stateProvider.state;
             var stateDefine = {};
             $stateProvider.state = function uiRouterCssProxyState(name, config) {
-                if (name && config && config.css) {
+                if (name && config) {
+                    config.css = config.css === undefined ? [] : config.css;
                     config.css = Array.isArray(config.css) ? config.css : [config.css];
                     setStateResolve(config);
                     setStateDefine(stateDefine, name, config);
@@ -30,32 +31,34 @@
                         return stateDefine;
                     },
                     css: [],
+                    promises: [],
                     deferred: null,
                     removedLinks: []
                 };
             }];
         }])
-        .directive('head', ['$rootScope', '$compile', '$state', '$interpolate', '$uiRouterCss', '$q', function ($rootScope, $compile, $state, $interpolate, $uiRouterCss, $q) {
-            return {
-                restrict: 'E',
-                link: function (scope, elem) {
-                    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-                        $uiRouterCss.fromState = fromState;
-                        $uiRouterCss.toState = toState;
-                        requireCssElement(elem, $uiRouterCss, $q, $uiRouterCss.getStateDefine(toState.name));
-                        setStateResolve(toState);
-                    });
-                    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-                        $uiRouterCss.css = $uiRouterCss.getStateDefine(toState.name).css;
-                        setCssElement(elem, $uiRouterCss);
-                        log('css change to', $uiRouterCss.css);
-                    });
-                }
-            };
-        }
-        ]);
+    .directive('head', ['$rootScope', '$compile', '$state', '$interpolate', '$uiRouterCss', '$q', function ($rootScope, $compile, $state, $interpolate, $uiRouterCss, $q) {
+        return {
+            restrict: 'E',
+            link: function (scope, elem) {
+                $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+                    $uiRouterCss.fromState = fromState;
+                    $uiRouterCss.toState = toState;
+                    requireCssElement(elem, $uiRouterCss, $q, $uiRouterCss.getStateDefine(toState.name));
+                    setStateResolve(toState);
+                });
+                $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+                    $uiRouterCss.css = $uiRouterCss.getStateDefine(toState.name).css;
+                    setCssElement(elem, $uiRouterCss);
+                    log('css change to', $uiRouterCss.css);
+                });
+            }
+        };
+    }
+    ]);
 
     function requireCssElement($head, $uiRouterCss, $q, toStateDefine) {
+        $uiRouterCss.promises = [];
         $uiRouterCss.removedLinks = [];
         $uiRouterCss.deferred = $q.defer();
         $uiRouterCss.deferred.promise.then(function () {
